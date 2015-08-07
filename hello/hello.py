@@ -22,6 +22,9 @@ class WrapHandler(tornado.web.RequestHandler):
         width = self.get_argument('width', 2)
         self.write(textwrap.fill(text, int(width)))
 
+    def write_error(self, status_code, **kwargs):
+        self.write("You caused a %d error" % status_code)
+
 
 if __name__ == "__main__":
     tornado.options.parse_command_line()
