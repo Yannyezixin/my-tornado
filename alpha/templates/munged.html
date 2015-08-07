@@ -1,22 +1,16 @@
-<html>
-    <head>
-        <title>Alpha Munger</title>
-        <link rel="stylesheet" href="{{ static_url('main.css') }}">
-    </head>
-    <body>
-        <div class="container">
-            <h1>替换结果</h1>
-            <p>
-            {% for line in change_lines %}
-                {% for word in line.split(' ') %}
-                    {% if len(word) > 0 and word[0] in source_map %}
-                        <span class="replace" title="{{ word }}">{{ choice(source_map[word[0]]) }}</span>
-                    {% else %}
-                        <span class="unchanged" title="">{{ word }}</span>
-                    {% end %}
-                {% end %}
-            {% end %}
-            </p>
-        </div>
-    </body>
-</html>
+{% extends "layout.html" %}
+
+{% block container %}
+<h1>替换结果</h1>
+<p>
+{% for line in change_lines %}
+    {% for word in line.split(' ') %}
+        {% if len(word) > 0 and word[0] in source_map %}
+            <span class="replace" title="{{ word }}">{{ choice(source_map[word[0]]) }}</span>
+        {% else %}
+            <span class="unchanged" title="">{{ word }}</span>
+        {% end %}
+    {% end %}
+{% end %}
+</p>
+{% end %}

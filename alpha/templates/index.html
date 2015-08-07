@@ -1,21 +1,15 @@
-<html>
-    <head>
-        <title>Alpha Munger</title>
-        <link rel="stylesheet" href="{{ static_url('main.css') }}">
-    </head>
-    <body>
-        <div class="container">
-            <h1>单词替换</h1>
-            <p>输入源文本与目标文本， 返回一个目标文本副本，并且每个单词替换成源文本中首字母相同的某个单词</p>
-            <form method="post" action="/change">
-                <div class="input">
-                    <textarea row="8" cols=55 name="source" placeholder="源文本"></textarea>
-                </div>
-                <div class="input">
-                    <textarea row="8" cols=55 name="target" placeholder="目标文本"></textarea>
-                </div>
-                <input class="right" type="submit" value="提交">
-            </form>
-        </div>
-    </body>
-</html>
+{% extends "layout.html" %}
+
+{% block container %}
+<h1>单词替换</h1>
+<p>输入源文本与目标文本， 返回一个目标文本副本，并且每个单词替换成源文本中首字母相同的某个单词</p>
+<form method="post" action="/change">
+    <div class="input">
+        <textarea row="8" cols=55 name="source" placeholder="源文本"></textarea>
+    </div>
+    <div class="input">
+        <textarea row="8" cols=55 name="target" placeholder="目标文本"></textarea>
+    </div>
+    <input class="right" type="submit" value="提交">
+</form>
+{% end %}
