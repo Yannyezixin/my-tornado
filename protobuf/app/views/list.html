@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block container %}
+<h1>Address Book</h1>
+<div>
+    {% for person in persons %}
+    <div>
+        <p>用户ID: {{ person.id }}</p>
+        <p>用户姓名: {{ person.name }}</p>
+        <p>用户邮箱: {{ person.email }}</p>
+        <p>
+            <span>电话号码</span>
+            {% for phone_number in person.phone %}
+                {% if phone_number.type == pd.Person.MOBILE %}
+                    <span>Mobile: </span>
+                {% elif phone_number.type == pd.Person.HOME %}
+                    <span>Home: </span>
+                {% else %}
+                    <span>Work: </span>
+                {% end %}
+                {{ phone_number.number }}
+            {% end %}
+        </p>
+    </div>
+    {% end %}
+</div>
+<form method="post" action="/add">
+    <div class="input">
+        <input name="id" type="number" placeholder="用户ID" required />
+    </div>
+    <div class="input">
+        <input name="name" type="text" placeholder="用户姓名" required />
+    </div>
+    <div class="input">
+        <input name="email" type="email" placeholder="用户邮箱" required />
+    </div>
+    <div class="input">
+        <input name="number" type="number" placeholder="电话号码" required />
+    </div>
+    <div class="input">
+        <select name="type" placeholder="号码类型" required />
+            <option value="home">家庭</option>
+            <option value="work">工作</option>
+            <option value="mobile">手机</option>
+        </select>
+    </div>
+    <input class="right" type="submit" value="提交">
+</form>
+{% end %}
