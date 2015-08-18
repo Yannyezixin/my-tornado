@@ -11,7 +11,7 @@ params = {
 }
 
 settings = {
-    'template_path': os.path.join(os.path.abspath('.'), params['app_dir_name'], 'views'),
-    'static_path': os.path.join(os.path.abspath('.'), params['app_dir_name'], 'assets'),
+    'template_path': os.path.join(os.path.dirname(__file__), '..', 'views'),
+    'static_path': os.path.join(os.path.dirname(__file__), '..', 'assets'),
 }
 
